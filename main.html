@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <style>
+    .active { fill: blue !important;}
+          /*.datamaps-key dt, .datamaps-key dd {float: none !important;}
+          .datamaps-key {right: -50px; top: 0;}*/
+
+          
+    </style>
+        <style type="text/css">
+          body{
+            background-color: #89C4F4;
+
+          }
+          h1{
+            color: #6C7A89;
+            margin: 10px;
+            font: 50px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+
+          }
+          #infoDiv{
+            background-color: #ecf0f1;
+            border-color: black;
+            border-width: 10px;
+            border-radius:10px;
+            height: 600px;
+            width: 600px;
+          }
+          #infoDiv2{
+            background-color: #ecf0f1;
+            border-color: black;
+            border-width: 10px;
+            border-radius:10px;
+            height: 600px;
+            width: 600px;
+          }
+
+          #header1{
+            color: #6C7A89;
+            margin: 10px;
+            font: 50px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #header2{
+            color: #6C7A89;
+            margin: 10px;
+            font: 50px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #equity1{
+            color: #f39c12;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #equity2{
+            color: #f39c12;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #fixed_income1{
+            color: #1abc9c;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #fixed_income2{
+            color: #1abc9c;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #real_estate1{
+            color: #8e44ad;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #real_estate2{
+            color: #8e44ad;
+            margin: 10px;
+            font: 20px Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 1px black;
+            text-align: center;
+            background: none;
+            border: none;
+          }
+          #totalEquityValue1{
+            color: #1F3A93;
+            margin: 10px;
+            font: 30px Arial, sans-serif;
+          }
+          #totalEquityValue2{
+            color: #1F3A93;
+            margin: 10px;
+            font: 30px Arial, sans-serif;
+          }
+          input[type=checkbox] {
+             visibility: hidden;
+          }
+          .compare {
+            width: 180px;
+            height: 36px;
+            background: gray;
+            margin: 20px auto;
+
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            position: relative;
+
+            -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+            -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+          }
+
+        .compare:after {
+          content: 'compare';
+          font: 18px/26px Arial, sans-serif;
+          color: #000;
+          position: absolute;
+          right: 10px;
+          top: 7px;
+          z-index: 0;
+          font-weight: bold;
+          
+        }
+
+      .compare:before {
+        content: 'compare';
+        font: 18px/26px Arial, sans-serif;
+        color: #1E824C;
+        position: absolute;
+        left: 10px;
+        top: 7px;
+        z-index: 0;
+        font-weight: bold;
+      }
+
+    .compare label {
+      display: block;
+      width: 90px;
+      height: 30px;
+
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      -o-transition: all .4s ease;
+      -ms-transition: all .4s ease;
+      transition: all .4s ease;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      z-index: 1;
+
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      background: #fcfff4;
+
+      background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    }
+
+    .compare input[type=checkbox]:checked + label {
+      left: 87px;
+    }
+
+
+          rect {
+        
+            fill-opacity:.6;
+         }
+        </style>
+      </head>
+      
+      <body>
+
+        
+       <h1>The Norwegian Oil Fund</h1>
+
+        <script type="text/javascript">
+        //var php_var = <?php echo ($jsonLiveNumbers); ?>;
+        </script>
+          
+        <div id="container" align="center" style="position: relative; width: 1000px; height: 500px;"></div>
+        <div class="compare">  
+        <input type="checkbox" align="center" value="compare" id="compare" name="compare" onclick= 'handleClick(this);'/>
+        <label for="compare"></label>
+
+
+        </div>
+        <div> 
+       <div class = "information"  align="center" style = "width: 100% overflow: hidden;">
+        <div id = "infoDiv"  class = "infoDiv" style="margin-left:200px; float: left" position: relative  height = "600" width = "500">
+          <button class = "link" id = "header1"></button>
+          <p id = "totalEquityValue1"></p>
+          <button class = "link" id = "equity1">  </button>
+          <button class = "link" id = "fixed_income1"></button>
+          <button class = "link" id = "real_estate1"></button>
+          <svg class "charts1"; width="600px" height="600px">
+          <svg version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="600px" height="600px" viewBox="0 0 600 600"
+          ></svg> 
+          <svg version="1.1" id="svg1_pie" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="600px" height="600px" viewBox="0 0 600 600" postion: "absolute"
+         ></svg> 
+         <svg version="1.1" id="svg1_real_estate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="600px" height="600px" viewBox="0 0 600 600" postion: "absolute"
+         >
+       </svg>
+       </svg>
+        </div>
+      <div></div>
+        <div id = "infoDiv2"  class = "infoDiv" style="margin-left:750px" position: relative  height = "100" width = "500">
+          <button class = "link" id = "header2"></button>
+          <p id = "totalEquityValue2"></p>
+          <button class = "link" id = "equity2"></button>
+          <button class = "link" id = "fixed_income2"></button>
+          <button class = "link" id = "real_estate2"></button>
+          <svg class "charts1"; width="600px" height="600px">
+          <svg version="1.1" id="svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="500px" height="500px" viewBox="0 0 500 500"
+          xml:space="preserve"></svg> 
+           <svg version="1.1" id="svg2_pie" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="600px" height="600px" viewBox="0 0 600 600" postion: "absolute"
+         ></svg> 
+         <svg version="1.1" id="svg2_real_estate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="600px" height="600px" viewBox="0 0 600 600" postion: "absolute"
+         >
+          </svg>
+          </svg>
+        Right</div>
+      </div>
+        
+        <script src="/src%20/js/components/d3/d3.min.js"></script>
+        <script src="/src%20/js/components/topojson/topojson.js"></script>
+        <!-- <script src="/src/js/json2.js"></script> -->
+        <script src="/dist/datamaps.world.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="/d3-tip-master/index.js"></script>
+
+        </form>
+
+        <script>
+        var m = 0
+        var max
+        var min = 0.1
+        var firstTimePie1 = true
+        var firstTimeBars1 = true
+        var firstTimePie2 = true
+        var firstTimeBars2 = true
+
+        var totalFundEquityValue = 0
+
+        var realEstateArray = []
+        var data
+        
+        var margin = {top: 50, bottom: 10, left:200, right: 40};
+        var width = 450 - margin.left - margin.right;
+        var height = 400 - margin.top - margin.bottom;
+
+        var width2 = 800 - margin.left - margin.right;
+        var height2 = 400 - margin.top - margin.bottom;
+
+        var xScale = d3.scale.linear().range([0, width]);
+        var yScale = d3.scale.ordinal().rangeRoundBands([0, height], .8, 0);
+
+
+//Barchart
+        var width = 400,
+            height = 450,
+            radius = Math.min(width, height) / 2;
+
+        var color = d3.scale.ordinal().range(["#f39c12", "#1abc9c", "#8e44ad"]);
+
+        var arc = d3.svg.arc()
+                  .outerRadius(radius - 10)
+                  .innerRadius(radius - 70);
+
+
+        var pie = d3.layout.pie()
+          .value(function(d) { 
+                  return d.value; });
+
+        var pieText = d3.layout.pie()
+          .value(function(d) { 
+                  console.log(d)
+                  return d.name; });
+
+      var svg_pie1 = d3.select(document.getElementById('svg1_pie')).append("svg")
+          .attr("width", width+margin.left+margin.right)
+          .attr("height", height+margin.top+margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+      svg_pie1.append("g")
+        .attr("class", "path");
+      svg_pie1.append("g")
+        .attr("class", "labels");
+      svg_pie1.append("g")
+        .attr("class", "lines");
+      
+
+      
+
+      var svg_pie2 = d3.select(document.getElementById('svg2_pie')).append("svg")
+          .attr("width", width+margin.left+margin.right)
+          .attr("height", height+margin.top+margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    svg_pie2.append("g")
+        .attr("class", "path");
+
+        var svg1 = d3.select(document.getElementById('svg1')).append("svg")
+                .attr("width", width+margin.left+margin.right)
+                .attr("height", height+margin.top+margin.bottom);
+                //.attr("element", document.getElementById('svg1'));
+ 
+        var g1 = svg1.append("g")
+                .attr("transform", "translate("+margin.left+","+margin.top+")")
+                .attr("text", "translate("+margin.left+","+margin.top+")");
+
+        var svg2 = d3.select(document.getElementById('svg2')).append("svg")
+                .attr("width", width+margin.left+margin.right)
+                .attr("height", height+margin.top+margin.bottom);
+                  //.attr("element", document.getElementById('infoDiv2'));
+
+        var g2 = svg2.append("g")
+                .attr("transform", "translate("+margin.left+","+margin.top+")")
+                .attr("text", "translate("+margin.left+","+margin.top+")");
+
+
+        var svg_real_estate1 = d3.select(document.getElementById('svg1_real_estate')).append("svg")
+                .attr("width", width+margin.left+margin.right)
+                .attr("height", height+margin.top+margin.bottom);
+        
+        var g_real_estate1 = svg_real_estate1.append("g")
+            .attr("text", "translate("+margin.left+","+margin.top+")");
+
+        var svg_real_estate2 = d3.select(document.getElementById('svg2_real_estate')).append("svg")
+              .attr("width", width+margin.left+margin.right)
+              .attr("height", height+margin.top+margin.bottom);
+        
+        var g_real_estate2 = svg_real_estate2.append("g")
+            .attr("text", "translate("+margin.left+","+margin.top+")");
+
+
+
+
+       //console.log("php variable: "+php_var)
+
+        var rows
+        var bars
+        var currentCountry1
+        var currentCountry2
+        var currentlyDisplayinEquity = false
+        var realEstate = false
+/*
+        var javaScriptMoneyArray = <?php echo json_encode($moneyArray); ?>;
+        console.log(javaScriptMoneyArray)
+        var moneyTitle = document.getElementById('money')
+
+        
+
+        var myVar=setInterval(function(){updateMoneyTitle()},200);
+
+
+        updateMoneyTitle()
+
+        function updateMoneyTitle(){
+          
+          if (m<60){
+            moneyTitle.innerHTML = javaScriptMoneyArray[m].Value
+            m ++;
+          }
+          else{
+            //javaScriptMoneyArray = <?php echo json_encode(updateMoneyArray());?>;
+            m = 0
+
+          }
+         
+        }
+       */
+        document.getElementById("infoDiv2").style.display = 'none';
+
+
+        var compare = false
+
+       
+
+        var segmentArray = ["Oil & Gas", "Industrials", "Financials", "Health Care", "Basic Materials", "Consumer Goods", "Telecommunications", "Technology", undefined, "Consumer Services", "Utilities"]
+
+        var button1 = document.getElementById("header1");
+        button1.onclick = function(){
+          element = document.getElementById("svg1_pie")
+          element.setAttribute("visibility", "visible")
+
+          element2 = document.getElementById("svg1")
+          element2.setAttribute("visibility", "hidden")
+
+        }
+        var button2 = document.getElementById("header2");
+        button2.onclick = function(){
+          element = document.getElementById("svg2_pie")
+          element.setAttribute("visibility", "visible")
+
+          element2 = document.getElementById("svg2")
+          element2.setAttribute("visibility", "hidden")
+
+        }
+
+
+
+    d3.json("NBIM_map_2014.json", function(data) {
+        //svg1.element = document.getElementById('svg1')
+        //svg2.element = document.getElementById('svg2')
+      
+        var equityButton1 = document.getElementById("equity1");
+        equityButton1.onclick = function(){
+          console.log("EQUITY")
+          realEstate = false
+          setBars("Equity","svg1_pie", "svg1")
+        };
+        var equityButton2 = document.getElementById("equity2");
+        equityButton2.onclick = function(){
+          realEstate = false
+          setBars("Equity", "svg2_pie", "svg2")
+        };
+        var fixedIncomeButton1 = document.getElementById("fixed_income1");
+        fixedIncomeButton1.onclick = function(){
+          realEstate = false
+          setBars("Fixed income", "svg1_pie", "svg1")
+        };
+        var fixedIcomeButton2 = document.getElementById("fixed_income2");
+        fixedIcomeButton2.onclick = function(){
+          realEstate = false
+          setBars("Fixed income", "svg2_pie", "svg2")
+        };
+        var realEstateButton1 = document.getElementById("real_estate1");
+        realEstateButton1.onclick = function(){
+          realEstate = true
+          setBars("Real estate", "svg1_pie", "svg1")
+        };
+        var realEstateButton2 = document.getElementById("real_estate2");
+        realEstateButton2.onclick = function(){
+          realEstate = true
+          setBars("Real estate", "svg2_pie", "svg2")
+        };
+
+
+
+          //var map = new Datamap({element: document.getElementById('container')});
+          var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.segment });
+          var companyValue = d3.tip().attr('class', 'd3-tip').html(function(d) { return "$"+d.value });
+          svg1.call(tip)
+          svg1.call(companyValue)
+          var realestateMap = new Datamap({
+            //datamaps-subunit.y = 0,
+            element: document.getElementById('container'),
+            scope: 'world',
+            position : 'relative',  
+            //element: document.getElementById('map'),
+            responsive: true,
+            done: function(datamap) {
+            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+              
+              
+              if (firstTimePie1 == true && firstTimeBars2 == true){ 
+                currentCountry1 = geography.properties.name
+                console.log(currentCountry1)
+                setButtonTitles1(currentCountry1)
+                currentCountry1 = geography.properties.name
+                console.log("hei første gang")
+                header1.innerHTML = geography.properties.name 
+                  totalEquityValue1.innerHTML = "Fraction of fund:" + convertToPercentString(getEquityInformation(geography.properties.name))
+                  header2.innerHTML = geography.properties.name
+                  totalEquityValue2.innerHTML = "Fraction of fund:" + convertToPercentString(getEquityInformation(geography.properties.name))
+                createChart(getInvestmentValues(geography.properties.name),"svg1_pie", "svg1")
+                createChart(getInvestmentValues(geography.properties.name),"svg2_pie", "svg2")
+                firstTimePie1 = false
+                firstTimePie2 = false
+               
+              }
+              else{
+               
+                if (compare) { 
+                  console.log("APKMNDVPIAENGVPIENPIENGV")
+                    
+                      if (currentlyDisplayinEquity == true){
+                        updateBars(getTopTenCompanies(geography.properties.name), "svg2")
+                      }
+                      else{
+                         updateBars(getTopTenFixedIncome(geography.properties.name), "svg2")
+                      }
+                      
+                      updatePieChart(getInvestmentValues(geography.properties.name), "svg2_pie")
+                  
+                  
+                    currentCountry2 = geography.properties.name
+                    setButtonTitles2(currentCountry2)
+                    //updateChart(getInvestmentValues(geography.properties.name), "svg2_pie")
+                    header2.innerHTML = geography.properties.name
+                    totalEquityValue2.innerHTML = "Fraction of fund:" + convertToPercentString(getEquityInformation(geography.properties.name))
+                  }
+                  else{
+                    currentCountry1 = geography.properties.name
+                    setButtonTitles1(currentCountry1)
+                    if (currentlyDisplayinEquity == true){
+                      updateBars(getTopTenCompanies(geography.properties.name), "svg1")
+                    }
+                    else{
+                      updateBars(getTopTenFixedIncome(geography.properties.name), "svg1")
+
+                    }
+                    updatePieChart(getInvestmentValues(geography.properties.name), "svg1_pie")
+                    
+                    //updateChart(getInvestmentValues(geography.properties.name), "svg1_pie")
+                    header1.innerHTML = geography.properties.name
+                    totalEquityValue1.innerHTML = "Fraction of fund:" + convertToPercentString(getEquityInformation(geography.properties.name))
+                  }
+              }
+
+
+            
+                
+            });
+            },
+            geographyConfig: {
+              popupOnHover: true,
+              highlightOnHover: true,
+              borderColor: '#444',
+              borderWidth: 0.5
+            },
+            bubblesConfig: {
+              popupTemplate: function(geography, data) {
+                return '<div class="hoverinfo">Some From New: data about ' + data.centered + '</div>'
+              },
+              fillOpacity: 0.2
+            },
+            fills: {
+              
+              defaultFill: '#ffffff'
+            }
+             
+      
+          });
+        data = data.re
+        changeUSName()
+        getMaxEquity()
+        getTotalFundEquityValue()
+        console.log(max)
+        console.log(data)
+        mapIdDataToMap()
+        getSegments()
+        getTopTenProperties("France")
+
+
+        function getSegments(){
+          var segmentArray = []
+          for (i in data){
+            
+            for (j in data[i].ct){
+              for (k in data[i].ct[j].eq){
+                for (l in data[i].ct[j].eq[k]){
+
+                
+
+               if (segmentArray.indexOf(data[i].ct[j].eq[k][l].s)<0){
+                segmentArray.push(data[i].ct[j].eq[k][l].s)
+               }
+                }
+
+              }
+
+            }
+          }
+          console.log(segmentArray)
+        }
+
+        function getInvestmentValues(name){
+          var total_equity 
+          var total_fixed
+          var total_real_estate
+          var total
+          for (i in data){
+            for (j in data[i].ct){
+              if (data[i].ct[j].n == name){
+                if (data[i].ct[j].eq != undefined){
+                  total_equity = data[i].ct[j].eq.vu
+                }
+                else{
+                  total_equity = 0
+                }
+                if (data[i].ct[j].fi != undefined){
+                  total_fixed = data[i].ct[j].fi.vu
+                }
+                else{
+                  total_fixed = 0
+                }
+                if (data[i].ct[j].re != undefined){
+                   total_real_estate = data[i].ct[j].re.vu
+                }
+                else{
+                  total_real_estate = 0
+                }
+                var investmentObject = [{total_equity: total_equity, total_fixed: total_fixed, total_real_estate
+                : total_real_estate, total: total}]
+
+                var investmentArray = [{name: "Equity", value: total_equity}, {name: "Fixed income", value: total_fixed}, {name: "Real estate", value: total_real_estate}]
+
+              }
+            }
+          }
+          return investmentArray
+
+        }
+        function setButtonTitles1(name){
+          var total_equity 
+          var total_fixed
+          var total_real_estate
+          var total
+          for (i in data){
+            for (j in data[i].ct){
+              if (data[i].ct[j].n == name){
+                if (data[i].ct[j].eq != undefined){
+                  total_equity = data[i].ct[j].eq.vu
+                }
+                else{
+                  total_equity = 0
+                }
+                if (data[i].ct[j].fi != undefined){
+                  total_fixed = data[i].ct[j].fi.vu
+                }
+                else{
+                  total_fixed = 0
+                }
+                if (data[i].ct[j].re != undefined){
+                   total_real_estate = data[i].ct[j].re.vu
+                }
+                else{
+                  total_real_estate = 0
+                }
+              }
+            }
+            total = total_fixed+total_equity+total_real_estate;
+
+            var equityFraction = (total_equity/total)*100
+            var fixedFraction = (total_fixed/total)*100
+            var realEstateFraction = (total_real_estate/total)*100
+
+            var equityString = "Equity: "+String(equityFraction).substring(0,4) + " %"
+            var fixedIncomeString = "Fixed Income: " +String(fixedFraction).substring(0,4) + " %"
+            var realEstateString = "Real Estate: " +String(realEstateFraction).substring(0,4)+ "%"
+            console.log(equityString)
+
+            document.getElementById("equity1").innerHTML = equityString
+            document.getElementById("fixed_income1").innerHTML = fixedIncomeString
+            document.getElementById("real_estate1").innerHTML = realEstateString
+          }
+
+        }
+        function setButtonTitles2(name){
+          var total_equity 
+          var total_fixed
+          var total_real_estate
+          var total
+          for (i in data){
+            for (j in data[i].ct){
+              if (data[i].ct[j].n == name){
+                if (data[i].ct[j].eq != undefined){
+                  total_equity = data[i].ct[j].eq.vu
+                }
+                else{
+                  total_equity = 0
+                }
+                if (data[i].ct[j].fi != undefined){
+                  total_fixed = data[i].ct[j].fi.vu
+                }
+                else{
+                  total_fixed = 0
+                }
+                if (data[i].ct[j].re != undefined){
+                   total_real_estate = data[i].ct[j].re.vu
+                }
+                else{
+                  total_real_estate = 0
+                }
+              }
+            }
+            total = total_fixed+total_equity+total_real_estate;
+
+            var equityFraction = (total_equity/total)*100
+            var fixedFraction = (total_fixed/total)*100
+            var realEstateFraction = (total_real_estate/total)*100
+
+            var equityString = "Equity: "+String(equityFraction).substring(0,4) + " %"
+            var fixedIncomeString = "Fixed Income: " +String(fixedFraction).substring(0,4) + " %"
+            var realEstateString = "Real Estate: " +String(realEstateFraction).substring(0,4)+ "%"
+            console.log(equityString)
+
+            document.getElementById("equity2").innerHTML = equityString
+            document.getElementById("fixed_income2").innerHTML = fixedIncomeString
+            document.getElementById("real_estate2").innerHTML = realEstateString
+          }
+
+        }
+
+        function createChart(data, svg_pie_name, svg_name){
+          console.log(svg_name)
+
+          var oRadius = radius-10
+          var iRadius = radius-70
+
+          var arc = d3.svg.arc()
+                    .outerRadius(oRadius)
+                    .innerRadius(iRadius);
+
+          var g = d3.select(document.getElementById(svg_pie_name)).select(".path")
+         // g = d3.select(document.getElementById(svg_pie_name)).selectAll("g")
+          var path = g.datum(data).selectAll("path")
+                      .data(pie)
+                      .enter().append("path")
+                        .attr("class","piechart")
+                        .attr("id", function(d){return d.data.name })
+                        .attr("fill", function(d,i){ return color(i); })
+                        .attr("d", arc)
+                        .each(function(d){ this._current = d; })
+                        .on({
+                        "click": function(){
+                          
+                          setBars(this.id, svg_pie_name, svg_name)
+                         
+                      },
+                      });
+    
+    }
+    function midAngle(d){
+      return d.startAngle + (d.endAngle - d.startAngle)/2;
+    }
+    function setBars(type, svg_pie_name, svg_name){
+          console.log(currentCountry1)
+          console.log(currentCountry2)
+          console.log(svg_name)
+          console.log(svg_pie_name)
+          element = document.getElementById(svg_pie_name)
+          element.setAttribute("visibility", "hidden")
+          element2 = document.getElementById(svg_name)
+          element2.setAttribute("visibility", "visible")
+          if (type == "Real estate"){
+            realEstate = true
+          }
+          else{
+            realEstate = false
+          }
+          
+          if (firstTimeBars1 == true && svg_name == "svg1" || firstTimeBars2 == true && svg_name == "svg2"){
+
+            if (svg_name == "svg1"){
+              if (type == "Equity"){
+                currentlyDisplayinEquity = true
+                createBars(getTopTenCompanies(currentCountry1), svg_name)
+                firstTimeBars1 = false
+              }
+              else if (type == "Fixed income"){
+                currentlyDisplayinEquity = false
+                createBars(getTopTenFixedIncome(currentCountry1), svg_name)
+                firstTimeBars1 = false
+
+              }
+              else if(type == "Real estate"){
+                currentlyDisplayinEquity = false
+                console.log(getTopTenProperties(currentCountry1))
+                console.log(getTopTenCompanies(currentCountry1))
+                createBars(getTopTenProperties(currentCountry1), svg_name)
+                firstTimeBars1 = false
+              }
+                
+            }
+          
+            else{
+              if (type == "Equity"){
+                console.log("tipper denne")
+                currentlyDisplayinEquity = true
+               createBars(getTopTenCompanies(currentCountry2), svg_name)
+             }
+             else if(type == "Fixed income"){
+              currentlyDisplayinEquity = false
+               createBars(getTopTenFixedIncome(currentCountry2), svg_name)
+             }
+             else if(type == "Real estate"){
+              currentlyDisplayinEquity = false
+              updateBars(getTopTenProperties(currentCountry2), svg_name)
+              firstTimeBars2 = false
+            }
+           }
+          }
+          else{
+            
+            if (svg_name == "svg1"){
+              if (type == "Equity"){
+                currentlyDisplayinEquity = true
+                updateBars(getTopTenCompanies(currentCountry1), svg_name)
+              }
+              else if(type == "Fixed income"){
+                currentlyDisplayinEquity = false
+                updateBars(getTopTenFixedIncome(currentCountry1), svg_name)
+              }
+              else if(type == "Real estate"){
+                currentlyDisplayinEquity = false
+                updateBars(getTopTenProperties(currentCountry1), svg_name)
+                
+            }
+
+               
+            }
+            else{
+              if (type == "Equity"){
+                currentlyDisplayinEquity = true
+                updateBars(getTopTenCompanies(currentCountry2), svg_name)
+              }
+              else if (type == "Fixed income"){
+                currentlyDisplayinEquity = false
+                updateBars(getTopTenFixedIncome(currentCountry2), svg_name)
+              }
+              else if(type == "Real estate"){
+                currentlyDisplayinEquity = false
+                updateBars(getTopTenProperties(currentCountry2), svg_name)
+                
+            }
+               
+            }
+          }
+
+      }
+
+
+
+        function updatePieChart(data, svg_pie_name){
+          
+          var g = d3.select(document.getElementById(svg_pie_name)).selectAll("g")
+          g.datum(data).selectAll("path").data(pie).transition().duration(1000).attrTween("d", arcTween)
+
+          // add any new paths
+          g.datum(data).selectAll("path")
+            .data(pie)
+          .enter().append("path")
+            .attr("class","piechart")
+            .attr("fill", function(d,i){ return color(i); })
+            .attr("d", arc)
+            .each(function(d){ this._current = d; })
+
+          // remove data not being used
+          g.datum(data).selectAll("path")
+            .data(pie).exit().remove();
+        }
+
+          function arcTween(a) {
+            a.data = a.data.value
+            console.log(a)
+            console.log(this._current)
+            var i = d3.interpolate(this._current, a);
+            this._current = i(0);
+            return function(t) {
+              return arc(i(t));
+            };
+        }
+
+        function createRealEstateTable(data, svg_name){
+          rows = d3.select(document.getElementById(svg_name)).append("g")
+                    .selectAll("g")
+                    .data(data)
+                    .enter()
+                    .append("g")
+                    .attr("class", "row"); 
+
+          var text = rows
+                        .append("text")
+                        .text(function (d) {  
+                        return getCompanyString(d)
+                        });
+          text.attr("x", function (d, i) {
+          return xScale(min) + 300;
+          })
+          .attr("y", function(d) { return yScale(d.name)+height; })
+          .attr("width", 300)
+          .attr("fill", "black")
+          .style("font-size","15px")
+
+        }
+        
+
+
+
+        function createBars(data, svg_name){
+            console.log(data)
+            if (realEstate == false){
+              max = d3.max(data, function(d) { return d.value; } );
+            }
+            else{
+              max = 0
+            }
+            
+            console.log("max value is: "+max)
+            min = 0;
+            xScale.domain([min, max]);
+            yScale.domain(data.map(function(d) { return d.name; }));
+           
+            console.log(height)
+            var height = 20
+            console.log(height)
+            
+
+            
+            rows = d3.select(document.getElementById(svg_name)).append("g")
+                    .selectAll("g")
+                    .data(data)
+                    .enter()
+                    .append("g")
+                    .attr("class", "row");       
+            //rect.enter().append("rect");
+
+            bars = rows.append("rect")
+                .attr("width", function(d) {
+                  if (realEstate == true){
+                    return 0
+                  }
+                  else{
+                     return xScale(d.value);
+                  }
+                  })
+                .attr("height", height)
+                .attr("fill", function(d){
+                      if (realEstate == false){
+                        return getColor(d.segment);
+                      }
+                      else{
+                        return "#ffffff"
+                      }
+                      
+                    })
+                .attr("x", 0)
+                .attr("y", function(d) { return yScale(d.name); })
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide)
+
+            var text = rows
+                        .append("text")
+                        .text(function (d) { 
+                        if (realEstate == true){
+                          return d.name
+                        }
+                        else{
+                          return getCompanyString(d)
+                        }
+                        
+                        });
+                      
+ 
+          text.attr("x", function (d, i) {
+            if (realEstate == true){
+              return  xScale(min);
+            }
+            else{
+              return xScale(min) + 300;
+            }
+          
+          })
+          .attr("y", function(d) { return yScale(d.name)+height; })
+          .attr("width", 300)
+          .attr("fill", "black")
+          .style("font-size","15px")
+          .on('mouseover', companyValue.show)
+          .on('mouseout', companyValue.hide)
+              }
+
+
+      function updateBars(newData, svg_name){
+            console.log(newData)
+            if (newData.length > 0){
+              if (realEstate == false){
+              max = d3.max(newData, function(d) { 
+                console.log(d)
+                return d.value; } );
+            }
+            else{
+              max = 0
+            }
+            
+            console.log("update on max: " +max)
+            min = 0;
+            xScale.domain([min, max]);
+            yScale.domain(newData.map(function(d) { return d.name; }));
+                
+                var height = 20
+
+          rows = d3.select(document.getElementById(svg_name))
+                    .selectAll("g.row")
+                    .data(newData);
+                         
+            //rect.enter().append("rect");
+         
+              rows.enter().append("rect");
+
+              rows.select("rect")
+                    .transition()
+                    .attr("fill", function(d){
+                      if (realEstate == false){
+                        return getColor(d.segment);
+                      }
+                      else{
+                        return "#ffffff"
+                      }
+                    })
+                    .attr("x", 0)
+                    .attr("y", function(d) { 
+                    return yScale(d.name); })
+                    .transition()
+                    .attr("width", function(d) {
+                    if (realEstate == true){
+                    return 0
+                    }
+                    else{
+                     return xScale(d.value);
+                    }
+                    })  
+                  .attr("height", height)
+ 
+              rows.enter().append("text");
+
+              text = rows.select("text")
+                .text(function (d) { return getCompanyString(d)});
+
+              text.attr("y", function(d) { return yScale(d.name)+height; })
+              text.attr("x", function (d, i) {
+                  if (realEstate == true){
+                    return  xScale(min);
+                  }   
+                  else{
+                  return xScale(min) + 300;
+                }
+          
+          })
+
+              rows.exit().remove();
+             
+
+
+            }
+            
+            }
+        
+      function getTotalFundEquityValue(){
+        for (i in data){
+            for (j in data[i].ct){
+              if (data[i].ct[j].eq != undefined){
+                totalFundEquityValue += data[i].ct[j].eq.vu
+              }
+        }
+      }
+    }
+   
+      function getEquityInformation(name){
+        for (i in data){
+            for (j in data[i].ct){
+                if (data[i].ct[j].n == name){
+                    return data[i].ct[j].eq.vu/totalFundEquityValue
+                }
+            }
+        }
+      }
+
+      function convertToPercentString(number){
+        var percentNumber = number*100
+        var numberString = String(percentNumber)
+        if (percentNumber < 0.01){
+          return numberString.substring(0,6)+"%"
+        }
+        else{
+           return numberString.substring(0,4)+"%"
+        }
+      }
+      function converFromPercentToString(number){
+        var numberString = String(number)
+        return numberString.substring(0,4)+"%"
+      }
+
+      function getCompanyString(data){
+        var companyName = data.name
+        var companyPercent = converFromPercentToString(data.ownership)
+        //console.log(companyName+ ", " +companyPercent)
+        if (data.ownership != 0){
+           return companyName+ ", " +companyPercent
+        }
+       
+      }
+
+      function getTopTenCompanies(name){
+        console.log(name)
+        for (i in data){
+            for (j in data[i].ct){
+                if (data[i].ct[j].n == name && data[i].ct[j].eq != undefined){
+
+                  var companyArray = data[i].ct[j].eq.cp
+                  companyArray.sort(function(a,b){
+                    return  b.h.vu - a.h.vu
+                  })
+            }
+          }
+        }
+        var slicedArray =  companyArray.slice(0,10)
+        console.log(slicedArray.length)
+        var returnArray = []
+        for (i in slicedArray){
+          var companyInfo = {name: slicedArray[i].n, ownership: slicedArray[i].h.o, value: slicedArray[i].h.vu, segment: slicedArray[i].s}
+          //returnArray.push(slicedArray[i].n, slicedArray[i].h.o))
+          returnArray.push(companyInfo)
+        }
+        var name = 1
+        while(returnArray.length<10){
+          var companyInfoNil = {name: name, ownership: 0, value: 0, segment: ""}
+          name += 1
+          returnArray.push(companyInfoNil)
+
+        }
+        return returnArray
+      }
+
+    function getTopTenFixedIncome(name){
+      for (i in data){
+        for (j in data[i].ct){
+          if (data[i].ct[j].n == name && data[i].ct[j].fi != undefined){
+            var fixedIncomeArray = data[i].ct[j].fi.cp
+            fixedIncomeArray.sort(function(a,b){
+              return b.h.vu - a.h.vu
+            })
+          }
+        }
+      }
+      var slicedArray = fixedIncomeArray.slice(0,10)
+      var returnArray = []
+      for (i in slicedArray){
+        var fixedIncomeInfo = {name: slicedArray[i].n, ownership: "nil", value: slicedArray[i].h.vu, segment: slicedArray[i].s}
+        returnArray.push(fixedIncomeInfo)
+      }
+      var name = 1
+        while(returnArray.length<10){
+          var companyInfoNil = {name: name, ownership: 0, value: 0, segment: ""}
+          name += 1
+          returnArray.push(companyInfoNil)
+
+        }
+        return returnArray
+
+
+    }
+    function getTopTenProperties(name){
+      console.log("kjører top properties")
+      var topTen = []
+      for (i in data){
+        console.log(data[i])
+        for (j in data[i].ct){
+          if (data[i].ct[j].n == name && data[i].ct[j].re != undefined){
+            //console.log(data[i].ct[j].re)
+            for (k in data[i].ct[j].re.cp){
+                for (l in data[i].ct[j].re.cp[k].a){
+                  if (data[i].ct[j].re.cp[k].a[l].s == "Office"){
+                    topTen.push({name: data[i].ct[j].re.cp[k].a[l].n, percent: data[i].ct[j].re.cp[k].a[l].p})
+                  }
+              }
+            }
+          }
+        }
+      }
+      topTen = topTen.slice(0,10)
+      return topTen
+    }
+
+    function tableCreate(topTen){
+      var tbl = document.getElementById('topTenCompanies')
+      tbl.innerHTML =""
+      //var body = document.body,
+      //    tbl  = document.createElement('table');
+      //    tbl.setAttribute("topTenCompanies", "infoDiv" )
+      //tbl.style.width  = '100px';
+      console.log(tbl)
+      //tbl.style.border = "1px solid black";
+
+    for(var i = 0; i < 10; i++){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 3; j++){    
+            var td = tr.insertCell();
+                console.log(topTen)
+                if (j == 0){
+                  td.appendChild(document.createTextNode(topTen[i].name));
+                }
+                else if(j == 1){
+                  td.appendChild(document.createTextNode(topTen[i].ownership));
+                }
+                else{
+                 // var svg = d3.select("td").append("svg").attr("width", 50).attr("height", 20).attr("x", 10000).attr("y", 20*i)
+                  //td.appendChild(document.createTextNode(topTen[i].value));
+                }
+         
+            }
+        }
+    console.log(tbl)
+    body.appendChild(tbl);
+  }
+
+  function upDateTable(){
+    tbl = document.getElementById('table');
+    console.log(tbl)
+  }
+
+
+
+      function getMaxEquity(){
+        max = 0
+        for (i in data){
+            for (j in data[i].ct){
+                if (data[i].ct[j].eq != undefined && data[i].ct[j].eq.vu >= max){
+                    max = data[i].ct[j].eq.vu
+                }
+              }
+                
+            }
+
+        }
+        function changeUSName(){
+          for (i in data){
+            for (j in data[i].ct){
+              if (data[i].ct[j].n == "United States"){
+                data[i].ct[j].n = "United States of America"
+              }
+            }
+        }
+      }
+
+      function mapIdDataToMap(){
+        var mapArray =  realestateMap.options.element.firstElementChild.children[0].children
+        
+        for (g in data){
+            for (h in data[g].ct){
+                for(var i = 0; i < mapArray.length; i++){ 
+                    if (mapArray[i].__data__.properties.name == data[g].ct[h].n){
+                       
+                        data[g].ct[h].id = mapArray[i].__data__.id
+                        if (data[g].ct[h].eq != undefined){
+                          mapArray[i].style.fill = gradient(data[g].ct[h].eq.vu)
+                        }
+                        else{
+              
+                          console.log(mapArray[i].style.fill)
+                          mapArray[i].style.fill = 'white'
+                        }
+                        
+                         }
+                    }
+                }
+
+            }
+            console.log(data)
+        }
+
+        function gradient(totalEquityValue){
+          var fillScale = d3.scale.log().domain([0.005*max, max]).range(["yellow", "red"])
+          console.log(fillScale(totalEquityValue))
+          return fillScale(totalEquityValue)
+        }
+
+        function getColor(segment){
+          switch(segment){
+            case "Oil & Gas":
+            return "#49ef70"
+            case "Industrials":
+            return "b9005c"
+            case "Financials":
+            return "#a200ff"
+            case "Health Care":
+            return "#f09609"
+            case "Basic Materials":
+            return "#e13636"
+            case "Consumer Goods":
+            return "#00ffff"
+            case "Telecommunications":
+            return "006400"
+            case "Technology":
+            return "#0000ff"
+            case "Consumer Services":
+            return "#ffff00"
+            case "Utilities":
+            return "#8a2be2"
+            default:
+            return "#000000"
+
+
+          }
+
+        }
+var segmentArray = ["Oil & Gas", "Industrials", "Financials", "Health Care", "Basic Materials", "Consumer Goods", "Telecommunications", "Technology", undefined, "Consumer Services", "Utilities"]
+  });
+    
+  window.addEventListener('resize', function() {
+        realestateMap.resize();
+    });
+
+    //alternatively with d3
+    d3.select(window).on('resize', function() {
+        realestateMap.resize();
+    });
+     function handleClick(cb){
+      console.log("neger i beger")
+      d3.selectAll("input").each(function(d){
+         
+        if (d3.select(cb).attr("value") == "compare" && d3.select(cb).node().checked){
+          console.log("balle")
+          compare = true
+          document.getElementById("infoDiv2").style.display = 'block';
+        }
+        else{
+          compare = false
+          document.getElementById("infoDiv2").style.display = 'none';
+        }
+      }
+      )}
+      /*
+        function createChart(data, svg_pie_name, svg_name){
+          var balle = d3.select(document.getElementById(svg_pie_name))
+          console.log(balle)
+          //var dataArray = Object.keys(data).map(function (key) {return data[key]});
+         
+           var g = d3.select(document.getElementById(svg_pie_name))
+                       //var path = d3.select(document.getElementById(svg_name)).datum(data).selectAll("path")//.append("g")
+                      .selectAll("g")
+                      .selectAll(".arc")
+                      .data(pie(data))
+                      .enter().append("g")
+                      .attr("class", "arc")
+                      .each(function(d) { this._current = d; })
+                      .on({
+                        "click": function(){
+                         
+                          console.log(this)
+                          element = document.getElementById(svg_pie_name)
+                          element.setAttribute("visibility", "hidden")
+                          element2 = document.getElementById(svg_name)
+                          element2.setAttribute("visibility", "visible")
+                          console.log(currentContry)
+                          if (firstTimeBars1 == true && svg_name == "svg1" || firstTimeBars2 == true && svg_name == "svg2"){
+                            createBars(getTopTenCompanies(currentContry), svg_name)
+                            if (svg_name == "svg1"){
+                               firstTimeBars1 = false
+                            }
+                            else{
+                              firstTimeBars2 = true
+                            }
+                           
+                          }
+                          else{
+                            updateBars(getTopTenCompanies(currentContry), svg_name)
+                          }
+                      },
+                      });
+
+          g.append("arc")
+            .attr("d", arc)
+            .style("fill", function(d) { 
+              switch(d.data.name){
+                case "Equity":
+                  return "#f39c12"
+                case "Fixed income":
+                  return "#1abc9c"
+                case "Real estate":
+                  return "#8e44ad"
+                default:
+                  return "#ffffff"
+              } });
+
+          g.append("text")
+             .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+              .attr("dy", ".35em")
+              .style("text-anchor", "middle")
+              .text(function(d) { return d.data.name; });
+
+          d3.selectAll("input")
+            .on("change", change);
+          }
+          */
+/*
+          function change() {
+            console.log("changing")
+            var value = this.value;
+            clearTimeout(timeout);
+            pie.value(function(d) { return d[value]; }); // change the value function
+            arc = arc.data(pie); // compute the new angles
+            arc.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
+          }
+       
+
+         var timeout = setTimeout(function() {
+           d3.select(document.getElementById("svg1_pie")).property("checked", true).each(change);
+          }, 2000);
+
+
+          function updateChart(data, svg_pie_name){
+            /*
+            console.log("oppdaterer")
+            var g = d3.select(document.getElementById(svg_pie_name))
+                    .selectAll(".arc")
+                    .data(pie(data))
+                    .path.transition().duration(750).attrTween("d", arcTween);
+
+             g.enter().append("path");
+
+             g.select("path")
+              
+              .attr("d", arc)
+              .transition().duration(1000)
+              .style("fill", function(d) { 
+              switch(d.data.name){
+                case "Equity":
+                  return "#f39c12"
+                case "Fixed income":
+                  return "#1abc9c"
+                case "Real estate":
+                  return "#8e44ad"
+                default:
+                  return "#ffffff"
+              } });
+
+            g.enter().append("text");
+
+           var text = g.select("text")
+           .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+              .attr("dy", ".35em")
+              .style("text-anchor", "middle")
+              .text(function(d) { return d.data.name; });
+
+            g.exit().remove()
+          */
+          //}
+
+      
+      
+
+
+
+</script>
+</body>
+</html>
